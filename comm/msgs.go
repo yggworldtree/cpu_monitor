@@ -5,9 +5,9 @@ import (
 )
 
 var (
-	MsgPthCpuMem = bean.NewTopicPath("system", "cpu-mem")
-	MsgPthCpuOut = bean.NewTopicPath("system", "cpu-warn")
-	MsgPthMemOut = bean.NewTopicPath("system", "mem-warn")
+	MsgPthCpuMem  = bean.NewTopicPath("system", "cpu-mem")
+	MsgPthCpuWarn = bean.NewTopicPath("system", "cpu-warn")
+	MsgPthMemWarn = bean.NewTopicPath("system", "mem-warn")
 )
 
 type MsgCpuInfo struct {
@@ -31,6 +31,7 @@ type MsgMemInfo struct {
 }
 
 type MsgBox struct {
+	Name       string     `json:"name"`
 	Cpu        MsgCpuInfo `json:"cpu"`
 	SwapMem    MsgMemInfo `json:"swapMem"`
 	VirtualMem MsgMemInfo `json:"virtualMem"`

@@ -17,6 +17,7 @@ import (
 var YwtEgn *ywtree.Engine
 
 type Manager struct {
+	name string
 	Ctx  context.Context
 	cncl context.CancelFunc
 
@@ -26,8 +27,9 @@ type Manager struct {
 	cpuinfo comm.MsgCpuInfo
 }
 
-func NewManager() *Manager {
+func NewManager(name string) *Manager {
 	c := &Manager{
+		name:   name,
 		msgtmr: utils.NewTimer(time.Second + time.Millisecond*50),
 	}
 	c.Ctx, c.cncl = context.WithCancel(context.Background())
@@ -99,7 +101,8 @@ func (c *Manager) runMsg() {
 	}
 	hbtp.Debugf("mem.totalMemory Swap:%.4f%%, Virtual:%.4f%%", v1.UsedPercent, v2.UsedPercent)
 	box := &comm.MsgBox{
-		Cpu: c.cpuinfo,
+		Name: c.name,
+		Cpu:  c.cpuinfo,
 		SwapMem: comm.MsgMemInfo{
 			Total:       v1.Total,
 			Used:        v1.Used,
