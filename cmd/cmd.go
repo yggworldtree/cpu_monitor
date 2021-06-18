@@ -44,5 +44,6 @@ func run() error {
 		Name:   "cpu-monitor",
 		Secret: DevSecret,
 	})
+	monitor.YwtEgn.RegGrpcGrpcFun(1, &monitor.DevRPC{})
 	return monitor.YwtEgn.Run()
 }

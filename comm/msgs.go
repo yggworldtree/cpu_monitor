@@ -10,6 +10,21 @@ var (
 	MsgPthMemWarn = bean.NewTopicPath("system", "mem-warn")
 )
 
+type MsgCpuInfos struct {
+	CPU        int32    `json:"cpu"`
+	VendorID   string   `json:"vendorId"`
+	Family     string   `json:"family"`
+	Model      string   `json:"model"`
+	Stepping   int32    `json:"stepping"`
+	PhysicalID string   `json:"physicalId"`
+	CoreID     string   `json:"coreId"`
+	Cores      int32    `json:"cores"`
+	ModelName  string   `json:"modelName"`
+	Mhz        float64  `json:"mhz"`
+	CacheSize  int32    `json:"cacheSize"`
+	Flags      []string `json:"flags"`
+	Microcode  string   `json:"microcode"`
+}
 type MsgCpuInfo struct {
 	Percents []float64 `json:"percents"`
 	Average  float64   `json:"average"`
@@ -35,4 +50,14 @@ type MsgBox struct {
 	Cpu        MsgCpuInfo `json:"cpu"`
 	SwapMem    MsgMemInfo `json:"swapMem"`
 	VirtualMem MsgMemInfo `json:"virtualMem"`
+}
+
+type ProcInfo struct {
+	Pid         int
+	User        string
+	Group       string
+	CommandName string
+	FullCommand string
+	Cpu         float64
+	Mem         float64
 }

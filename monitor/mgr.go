@@ -56,7 +56,6 @@ func (c *Manager) runCpu() {
 			hbtp.Debugf("Manager runCpu recover:%v", err)
 		}
 	}()
-
 	cs, err := cpu.PercentWithContext(c.Ctx, time.Second, true)
 	if err != nil {
 		hbtp.Debugf("cpu.Percent err:%v", err)
@@ -100,6 +99,10 @@ func (c *Manager) runMsg() {
 		return
 	}
 	hbtp.Debugf("mem.totalMemory Swap:%.4f%%, Virtual:%.4f%%", v1.UsedPercent, v2.UsedPercent)
+	nm := c.name
+	if nm == "" {
+		nm = YwtEgn.Alias()
+	}
 	box := &comm.MsgBox{
 		Name: c.name,
 		Cpu:  c.cpuinfo,
