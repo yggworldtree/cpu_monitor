@@ -1,1 +1,1 @@
-# cup_monitor
+# cpu_monitor
