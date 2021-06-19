@@ -4,14 +4,16 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"sync"
+	"time"
+
 	hbtp "github.com/mgr9525/HyperByte-Transfer-Protocol"
 	"github.com/shirou/gopsutil/v3/cpu"
 	"github.com/shirou/gopsutil/v3/mem"
+	"github.com/shirou/gopsutil/v3/process"
 	"github.com/yggworldtree/cpu_monitor/comm"
 	"github.com/yggworldtree/go-core/utils"
 	"github.com/yggworldtree/go-sdk/ywtree"
-	"sync"
-	"time"
 )
 
 var YwtEgn *ywtree.Engine
@@ -87,6 +89,12 @@ func (c *Manager) runMsg() {
 	}()
 	if !c.msgtmr.Tick() {
 		return
+	}
+	ps, err := process.Processes()
+	if err == nil {
+		c.cpulk.Lock()
+		c.cpuinfo.ProcessLen = len(ps)
+		c.cpulk.Unlock()
 	}
 	v1, err := mem.SwapMemoryWithContext(c.Ctx)
 	if err != nil {
