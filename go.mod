@@ -7,7 +7,7 @@ require (
 	github.com/alecthomas/units v0.0.0-20210208195552-ff826a37aa15 // indirect
 	github.com/mgr9525/HyperByte-Transfer-Protocol v1.1.5
 	github.com/shirou/gopsutil/v3 v3.21.5
-	github.com/yggworldtree/go-core v0.0.0-20210618093102-142595983366
-	github.com/yggworldtree/go-sdk v0.0.0-20210618093528-f70abc728716
+	github.com/yggworldtree/go-core v0.0.0-20210621070134-be038d4e6f72
+	github.com/yggworldtree/go-sdk v0.0.0-20210621070354-81f525cdeb93
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6
 )
