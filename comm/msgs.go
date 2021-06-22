@@ -52,11 +52,16 @@ type MsgCpuInfos struct {
 	Microcode  string   `json:"microcode"`
 }
 type ProcInfo struct {
-	Pid         int
-	User        string
-	Group       string
-	CommandName string
-	FullCommand string
-	Cpu         float64
-	Mem         float64
+	Pid         int      `json:"pid"`
+	User        string   `json:"user"`
+	Group       string   `json:"group"`
+	CommandName string   `json:"commandName"`
+	CommandPath string   `json:"commandPath"`
+	CommandLine []string `json:"commandLine"`
+	CreateTime  int64    `json:"createTime"`
+	Terminal    string   `json:"terminal"`
+	Status      []string `json:"status"`
+	Cwd         string   `json:"cwd"`
+	Cpu         float64  `json:"cpu"`
+	Mem         float64  `json:"mem"`
 }
