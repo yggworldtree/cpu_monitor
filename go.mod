@@ -11,3 +11,8 @@ require (
 	github.com/yggworldtree/go-sdk v0.0.0-20210621073455-b0231047e196
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6
 )
+
+replace (
+	github.com/yggworldtree/go-core => ../go-core
+	github.com/yggworldtree/go-sdk => ../go-sdk
+)
